@@ -1,0 +1,229 @@
+@font-face {
+    font-family: 'Rubik';
+    src: url('assets/fonts/Rubik-VariableFont_wght.ttf') format('truetype');
+    font-weight: 300, 400, 500;
+}
+
+:root{
+    --purple-600: hsl(246, 80%, 60%);
+    
+    --orange-300: hsl(15,100%, 70%);
+    --work: var(--orange-300, hsl(15,100%, 70%));
+
+    --blue-300: hsl(195, 74%, 62%);
+    --play: var(--blue-300, hsl(195, 74%, 62%));
+
+    --pink-400: hsl(348, 100%, 68%);
+    --study: var(--pink-400, hsl(348, 100%, 68%));  
+
+    --green-400: hsl(145, 58%, 55%);
+    --exercise: var(--green-400, hsl(145, 58%, 55%));
+
+    --purple-700: hsl(264, 64%, 52%);
+    --social: var(--purple-700, hsl(264, 64%, 52%));    
+
+    --yellow-300: hsl(43, 84%, 65%);
+    --self-care: var(--yellow-300, hsl(43, 84%, 65%));
+
+    --neutral-navy-950: hsl(226, 43%, 10%);
+    --neutral-navy-900: hsl(235, 46%, 20%);
+    --purple-500: hsl(235, 45%, 61%);
+    --navy-200: hsl(236, 100%, 87%);
+}
+
+.sr-only{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+body{
+    font-family: 'Rubik', sans-serif;
+    background-color: var(--neutral-navy-950);
+    color: var(--navy-200);
+    margin: 0;
+    display: grid;
+    place-items: center;
+}
+
+main{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
+    gap: 1.5em;
+    padding: 1em;
+    max-inline-size: 1172px;
+    place-content: center;
+    min-block-size: 100vh;
+    box-sizing: border-box;
+}
+
+.info{
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 1em;
+    align-items: center;
+    padding: 1.25em;
+    justify-content: start;
+    font-weight: 400;
+    border-radius: 1em;
+    box-sizing: border-box;
+    min-inline-size: 100%;
+}
+
+h2{
+    font-weight: 300;
+    & p{
+        font-size: 1rem;
+    }
+}
+
+.profile{
+    border-radius: 50%;
+    border: .25em solid white;
+    max-inline-size: 72px;
+}
+
+.report-view-switcher{
+    display: flex;
+    justify-content: space-between;
+    padding: 1.25em;
+    flex-direction: column;
+    gap: 1em;
+    align-items: start;
+}
+
+[aria-pressed=true]{
+    color: white;
+}
+
+.categories{
+    list-style: none;
+    padding-inline-start: 0;;
+    display: contents;
+}
+
+.work{
+    --card-background-color: var(--work);
+}
+
+.play{
+    --card-background-color: var(--play);
+}
+
+.study{
+    --card-background-color: var(--study);
+}
+
+.exercise{
+    --card-background-color: var(--exercise);
+}
+
+.social{
+    --card-background-color: var(--social);
+}
+
+.self-care{
+    --card-background-color: var(--self-care);
+}
+
+:is(.work, .play, .study, .exercise, .social, .self-care) .card{
+    --card-background-color: var(--neutral-navy-900);
+}
+
+.card{
+    border-radius: 1em;
+    background-color: var(--card-background-color, var(--neutral-navy-900));
+    font-size: 1.125em;
+    overflow: hidden;
+    color: white;
+}
+
+.user{
+    @media screen and (min-width: 568px){
+        grid-column: 1/-1;
+    }
+
+    @media screen and (min-width: 1128px){
+        grid-column: 1;
+        grid-row: span 2;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+}
+
+.info{
+    background-color: var(--purple-600);
+    @media screen and (min-width: 1128px){
+        flex-direction: column-reverse;
+        align-items: start;
+        gap: 2em;
+        flex-grow: 1;
+    }
+}
+
+.banner{
+    padding-inline: 1em;
+    display: flex;
+    justify-content: end;
+    max-block-size: 2.5em;
+
+    & img{
+        object-fit: cover;
+    }
+}
+
+.statistics{
+    padding: 1em;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+
+    /*reset them to 0 to avoid showing background color from outer card*/
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
+    @media screen and (min-width: 1128px){
+        :not(button){
+            grid-column: 1;
+            justify-self: start;
+        }    
+    }
+} 
+
+.current-time{
+    font-weight: 300;
+    font-size: 2em;
+}
+
+button{
+    background:none;
+    border: none;
+    justify-self: end;
+    color: var(--navy-200);
+}
+
+.previous-time{
+    color: var(--navy-200);
+    font-weight: 300;
+    justify-self: end;
+    font-size: .75rem;
+}
+
+[data-current=daily] :is(.current-time,.previous-time) :not(.daily){
+    display: none;
+}
+
+[data-current=weekly] :is(.current-time,.previous-time) :not(.weekly){
+    display: none;
+}
+
+[data-current=monthly] :is(.current-time,.previous-time) :not(.monthly){
+    display: none;
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="style.css">
+
+  <title>Frontend Mentor | Time tracking dashboard</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="card user">
+      <div class="info">
+        <div class="title">
+          <h1 class="sr-only">Time tracking dashboard</h1>
+          <h2><p>Report for</p>Jeremy Robson</h2>
+        </div>
+        <img src="assets/images/image-jeremy.png" class="profile" alt="">
+      </div>
+      <div class="report-view-switcher">
+        <button type="button" id="switch-daily" aria-pressed="true" aria-controls="report">Daily</button>
+        <button type="button" id="switch-weekly" aria-pressed="false" aria-controls="report">Weekly</button>
+        <button type="button" id="switch-monthly" aria-pressed="false" aria-controls="report">Monthly</button>
+      </div>
+    </header>
+    <ul id="report" class="categories" data-current="weekly">
+    </ul>
+    
+    <template id="time-entry-template">
+      <li class="card">
+        <div class="banner"><img src="" alt=""></div>
+        <div class="card statistics">
+          <p class="category-name"></p>
+          <button type="button"><img src="assets/images/icon-ellipsis.svg" alt="actions"></button>
+          <p class="current-time">
+            <span class="daily"></span>
+            <span class="weekly"></span>
+            <span class="monthly"></span>
+          </p>
+          <p class="previous-time">
+            <span class="daily"></span>
+            <span class="weekly"></span>
+            <span class="monthly"></span>
+          </p>
+        </div>
+      </li>
+    </template>
+  </main>
+
+  
+  <div class="attribution sr-only">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
