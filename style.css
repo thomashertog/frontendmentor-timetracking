@@ -57,7 +57,9 @@ main{
     grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
     gap: 1.5em;
     padding: 1em;
+    inline-size: 100%;
     max-inline-size: 1172px;
+    overflow: hidden;
     place-content: center;
     min-block-size: 100vh;
     box-sizing: border-box;
@@ -93,9 +95,11 @@ h2{
     display: flex;
     justify-content: space-between;
     padding: 1.25em;
-    flex-direction: column;
     gap: 1em;
     align-items: start;
+    @media screen and (min-width: 1128px){
+        flex-direction: column;
+    }
 }
 
 [aria-pressed=true]{
